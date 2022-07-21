@@ -65,7 +65,7 @@ class CloudWatch extends AbstractProcessingHandler
         int $retention = 14,
         int $batchSize = 10000,
         array $tags = [],
-        int | Level $level = Level::Debug,
+        int | string | Level $level = Level::Debug,
         bool $bubble = true,
         bool $createGroup = true,
     ) {
