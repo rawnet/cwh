@@ -107,10 +107,10 @@ class CloudWatch extends AbstractProcessingHandler
         }
     }
 
-    private function addToBuffer(LogRecord $logRecord): void
+    private function addToBuffer(array $record): void
     {
-        $this->currentDataAmount += $this->getMessageSize($logRecord);
-        $this->buffer[] = $logRecord;
+        $this->currentDataAmount += $this->getMessageSize($record);
+        $this->buffer[] = $record;
     }
 
     private function flushBuffer(): void
@@ -163,9 +163,9 @@ class CloudWatch extends AbstractProcessingHandler
     /**
      * http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html
      */
-    private function getMessageSize(LogRecord $record): int
+    private function getMessageSize(array $record): int
     {
-        return strlen($record->message) + 26;
+        return strlen($record['message']) + 26;
     }
 
     /**
