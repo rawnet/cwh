@@ -18,8 +18,14 @@ Please press **&#9733; Star** button if you find this library useful.
 ## Disclaimer
 This library uses AWS API through AWS PHP SDK, which has limits on concurrent requests. It means that on high concurrent or high load applications it may not work on it's best way. Please consider using another solution such as logging to the stdout and redirecting logs with fluentd.
 
+This project is Rawnet's fork of the original project https://github.com/maxbanton/cwh - we've just updated the code to meet more modern requirements.
+
 ## Requirements
-* PHP ^7.2
+* PHP >=8.1
+* Monolog ^3.0
+* AWS PHP SDK 3.229.2
+* PHPUnit ^9.5
+* CodeSniffer ^3.7
 * AWS account with proper permissions (see list of permissions below)
 
 ## Features
@@ -29,10 +35,23 @@ This library uses AWS API through AWS PHP SDK, which has limits on concurrent re
 * Suitable for web applications and for long-living CLI daemons and workers
 
 ## Installation
+You will need to edit your project's composer.json to include the following:
+
+```
+    ...
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rawnet/cwh"
+        }
+    ],
+    ...
+```
+
 Install the latest version with [Composer](https://getcomposer.org/) by running
 
 ```bash
-$ composer require maxbanton/cwh:^2.0
+$ composer require maxbanton/cwh:dev-master#v3.0.0
 ```
 
 ## Basic Usage
